@@ -1,13 +1,10 @@
 import { MovieData } from './types/MovieData';
 import { ResponseError } from './types/ReponseError';
 
-const OMDB_API_KEY = (() => {
-  if (typeof process !== 'undefined' && process.env?.REACT_APP_OMDB_API_KEY) {
-    return process.env.REACT_APP_OMDB_API_KEY;
-  }
-
-  return 'your-key';
-})();
+const OMDB_API_KEY =
+  import.meta.env.VITE_OMDB_API_KEY ||
+  (typeof process !== 'undefined' && process.env?.REACT_APP_OMDB_API_KEY) ||
+  'your-key';
 
 const API_URL = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}`;
 
