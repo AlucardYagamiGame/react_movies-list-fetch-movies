@@ -15,13 +15,14 @@ type Props = {
 const DEFAULT_IMG_URL =
   'https://via.placeholder.com/360x270.png?text=no%20preview';
 
+// type guard better?
 function isResponseError(
   data: MovieData | ResponseError,
 ): data is ResponseError {
   return 'Response' in data && data.Response === 'False';
 }
 
-function normalizeMovie(data: MovieData): Movie {
+function normalizeMovie(data: MovieData) {
   const hasPoster = data.Poster !== 'N/A' && data.Poster !== '';
 
   return {
